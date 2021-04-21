@@ -1,6 +1,6 @@
 # SilverStripe TOTP Authenticator
 
-[![Build Status](https://travis-ci.com/silverstripe/silverstripe-totp-authenticator.svg?branch=master)](https://travis-ci.com/silverstripe/silverstripe-totp-authenticator)
+[![Build Status](https://api.travis-ci.com/silverstripe/silverstripe-totp-authenticator.svg?branch=4)](https://travis-ci.com/silverstripe/silverstripe-totp-authenticator))
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/silverstripe/silverstripe-totp-authenticator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/silverstripe/silverstripe-totp-authenticator/?branch=master)
 [![codecov](https://codecov.io/gh/silverstripe/silverstripe-totp-authenticator/branch/master/graph/badge.svg)](https://codecov.io/gh/silverstripe/silverstripe-totp-authenticator)
 [![SilverStripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
@@ -40,12 +40,12 @@ for encrypting the TOTP secret. The authentication method will not be available 
 Please note that existing registered TOTP methods for users will not be usable on environments with different values
 for `SS_MFA_SECRET_KEY` than they were registered in.
 
-There are many ways to create a random secret key, on most Linux installations
-it can be achieved through `openssl`. The secret key length depends on your
+There are many ways to create a random secret key, the easiest
+is by executing a `php` command on the command line. The secret key length depends on your
 specific information security controls, but 32 characters is a good baseline.
 
 ```
-openssl rand -base64 32
+php -r 'echo substr(base64_encode(random_bytes(32)), 0, 32) . "\n";'
 ```
 
 ### TOTP secret length
